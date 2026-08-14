@@ -18,10 +18,9 @@
             text-align: center;
         }
         .heart {
-            font-size: 100px;
+            font-size: 80px;
             color: #ff6b81;
             cursor: pointer;
-            user-select: none;
             animation: pulse 1.2s infinite;
         }
         @keyframes pulse {
@@ -29,17 +28,23 @@
             50% { transform: scale(1.15); }
             100% { transform: scale(1); }
         }
+        .hint {
+            color: #555;
+            font-size: 16px;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="heart" onclick="showMessage()">❤️</div>
+    <div class="hint">Click the heart, Jan!</div>
 </div>
 
 <script>
     function showMessage() {
-        alert('✨ i love you so much Jan, you mean the world to me! ✨');
+        alert('✨ i like you Jan ✨');
     }
 </script>
 
