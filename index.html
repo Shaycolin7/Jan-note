@@ -1,9 +1,11 @@
-html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Message For Jan</title>
+    <!-- This loads the safe, free confetti animation tool -->
+    <script src="https://jsdelivr.net"></script>
     <style>
         body {
             background-color: #ffe4e1;
@@ -13,14 +15,16 @@ html<!DOCTYPE html>
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
         }
         .container {
             text-align: center;
         }
         .heart {
-            font-size: 80px;
+            font-size: 100px;
             color: #ff6b81;
             cursor: pointer;
+            user-select: none;
             animation: pulse 1.2s infinite;
         }
         @keyframes pulse {
@@ -28,23 +32,28 @@ html<!DOCTYPE html>
             50% { transform: scale(1.15); }
             100% { transform: scale(1); }
         }
-        .hint {
-            color: #555;
-            font-size: 16px;
-            margin-top: 15px;
-        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="heart" onclick="showMessage()">❤️</div>
-    <div class="hint">Click the heart, Jan!</div>
+    <!-- Clean heart with no HTML text next to it -->
+    <div class="heart" onclick="celebrate()">❤️</div>
 </div>
 
 <script>
-    function showMessage() {
-alert('✨ i love you so much Jan, you mean the world to me! ✨');
+    function celebrate() {
+        // 1. Trigger the massive confetti burst
+        confetti({
+            particleCount: 150,
+            spread: 80,
+            origin: { y: 0.6 }
+        });
+
+        // 2. Wait just a split second for the visual explosion, then show the message
+        setTimeout(() => {
+            alert('✨ i love you so much Jan, you mean the world to me! ✨');
+        }, 400);
     }
 </script>
 
