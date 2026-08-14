@@ -13,6 +13,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
         }
         .container {
             text-align: center;
@@ -21,6 +22,7 @@
             font-size: 80px;
             color: #ff6b81;
             cursor: pointer;
+            user-select: none;
             animation: pulse 1.2s infinite;
         }
         @keyframes pulse {
@@ -33,6 +35,55 @@
             font-size: 16px;
             margin-top: 15px;
         }
+
+        /* --- New Styles for the In-Page Pop-Up Box --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* Softly dims the background */
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 80%;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            animation: popIn 0.3s ease-out;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-text {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .close-btn {
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -42,9 +93,23 @@
     <div class="hint">Click the heart, Jan!</div>
 </div>
 
+<!-- New In-Page Pop-Up Box Elements -->
+<div id="loveModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-text">✨ i love you so much Jan, you mean the world to me! ✨</div>
+        <button class="close-btn" onclick="closeMessage()">Close ❤️</button>
+    </div>
+</div>
+
 <script>
     function showMessage() {
-        alert('✨ i like you Jan ✨');
+        // Displays the custom pop-up box instead of the alert
+        document.getElementById('loveModal').style.display = 'flex';
+    }
+
+    function closeMessage() {
+        // Hides the pop-up box when clicked
+        document.getElementById('loveModal').style.display = 'none';
     }
 </script>
 
